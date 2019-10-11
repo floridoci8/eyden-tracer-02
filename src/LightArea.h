@@ -26,12 +26,22 @@ public:
 		, m_e2(p3 - p0)
 	{ 
 		// --- PUT YOUR CODE HERE ---
+		m_normal = m_e1.cross(m_e2);
+		m_area = norm(m_normal);
+		m_normal = normalize(m_normal);
 	}  
 
 	virtual std::optional<Vec3f> Illuminate(Ray& ray) override
 	{
 		// --- PUT YOUR CODE HERE ---
-		return Vec3f();
+		float f1 = DirectGraphicalModels::random::U<float>(0., 1.);
+		float f2 = DirectGraphicalModels::random::U<float>(0., 1.);
+		Vec3f p = m_p0 + m_e1 * f1 + m_e2 * f2;
+
+		ray.t = ray.dir.dot(p - ray.org);
+		ray.dir = normalize(p - ray.org);
+
+		return std::make_optional<Vec3f>(m_intensity / (4 * Pif));
 	}
 
 	Vec3f GetNormal(const Vec3f& position) const { return m_normal; }
