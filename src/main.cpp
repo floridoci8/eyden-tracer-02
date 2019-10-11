@@ -55,8 +55,8 @@ Mat RenderFrame(void)
 	Vec3f lightPosition2(-3, 5, +4);
 
 	// Add light sources to scene
-	scene.Add(std::make_shared<CLightPoint>(pointLightIntensity, lightPosition1));
-	scene.Add(std::make_shared<CLightPoint>(pointLightIntensity, lightPosition2));
+	// scene.Add(std::make_shared<CLightPoint>(pointLightIntensity, lightPosition1));
+	// scene.Add(std::make_shared<CLightPoint>(pointLightIntensity, lightPosition2));
 	scene.Add(std::make_shared<CLightArea>(areaLightIntensity, Vec3f(-1.5f, 10, -1.5f), Vec3f(1.5f, 10, 1.5f), Vec3f(1.5f, 10, -1.5f), Vec3f(-1.5f, 10, 1.5f)));
 
 
